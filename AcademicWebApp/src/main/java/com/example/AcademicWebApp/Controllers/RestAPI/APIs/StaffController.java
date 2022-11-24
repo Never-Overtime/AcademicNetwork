@@ -26,5 +26,5 @@ public class StaffController  {
         //return "Hello, " + user. + "! You are a " + request.getAttribute("role");
         return (UserEntity) request.getAttribute("userEntity");
     }
-    
+
 }

@@ -84,5 +84,5 @@ public class StudentController {
     {
         return "You are a " + user.getRole() + ". This should be that page where you can edit your profile and etc.";
     }
-    
+
 }

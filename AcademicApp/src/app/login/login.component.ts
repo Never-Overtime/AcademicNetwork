@@ -28,8 +28,30 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    //TODO
+    const typeUser = ["student", "teacher", "admin"];
+    var found = false;
+    let newUser;
+
+    this.http.get<IUser>(`http://localhost:8080/user/${this.loginForm.value.username}`)
+          .subscribe((v:IUser) => {
+            if (v.role == "null") {
+              alert("Login failed");
+            }
+            else {
+              alert(`login as ${v.role} successful`);
+              this.loginForm.reset();
+              this.router.navigate([`${v.role.toLocaleLowerCase()}-dashboard`]);
+            }
+          })
   }
 }
 
+export default interface IUser {
+  role: string
+}
 
+export async function http(request: RequestInfo): Promise<any> {
+  const response = await fetch(request);
+  const body = await response.json();
+  return body;
+}

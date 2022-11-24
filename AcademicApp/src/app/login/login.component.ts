@@ -1,5 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -8,13 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LoginComponent implements OnInit {
+  public loginForm !: FormGroup;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
   }
 
-}
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: [''],
+      password: ['']
+    })
+  }
 
+  async login() {
+    //TODO
+  }
+}
 
 

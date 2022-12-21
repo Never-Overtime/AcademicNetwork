@@ -12,6 +12,7 @@ from domain.student import Student
 from domain.studentEnrollment import StudentEnrollment
 from domain.teacher import Teacher
 from domain.user import User
+from domain.userData import UserData
 from utils.faculties import *
 from utils.coursePriorities import *
 
@@ -20,6 +21,7 @@ class Service:
 
     def __init__(self):
         self.__users = []
+        self.__userData = []
         self.__teachers = []
         self.__students = []
         self.__staff = []
@@ -35,20 +37,40 @@ class Service:
         username = fullName.split(' ')
         username = (username[0] + username[1]).lower()
 
+        for us in self.__users:
+            if us.username == username:
+                return None
+
         S = random.randint(8, 12)
 
         password = ''.join(random.choices(string.ascii_uppercase + string.digits, k=S))
 
         return User(username, password, role)
 
+    def __generateUserData(self, fullName):
+        username = fullName.split(' ')
+        name = username[0]
+        surname = username[1]
+        username = (username[0] + username[1]).lower()
+        email = username + '@yahoo.com'
+        phone = ''.join(random.choice('0123456789') for _ in range(10))
+        address = ''.join(random.choice(string.ascii_lowercase) for _ in range(random.randint(10, 15)))
+        cnp = ''.join(random.choice('0123456789') for _ in range(13))
+
+        return UserData(username, name, surname, email, phone, address, cnp)
+
     def __generateTeachers(self, noTeachers):
         for i in range(noTeachers):
             fullName = names.get_full_name()
 
             user = self.__generateUser(fullName, "teacher")
+            if user == None:
+                return
+            userData = self.__generateUserData(fullName)
             teacher = Teacher(user.username, fullName)
 
             self.__users.append(user)
+            self.__userData.append(userData)
             self.__teachers.append(teacher)
 
     def __generateStaff(self, noStaff):
@@ -56,9 +78,13 @@ class Service:
             fullName = names.get_full_name()
 
             user = self.__generateUser(fullName, "staff")
+            if user == None:
+                return
+            userData = self.__generateUserData(fullName)
             staff = Staff(user.username, fullName)
 
             self.__users.append(user)
+            self.__userData.append(userData)
             self.__staff.append(staff)
 
     def __generateFaculties(self):
@@ -106,12 +132,16 @@ class Service:
                 group2 = None
 
             user = self.__generateUser(fullName, "student")
+            if user == None:
+                return
+            userData = self.__generateUserData(fullName)
             if group2 != None:
-                student = Student(fullName, user.username, group1.id, group2.id)
+                student = Student(fullName, user.username, 0, group1.id, group2.id)
             else:
-                student = Student(fullName, user.username, group1.id)
+                student = Student(fullName, user.username, 0, group1.id)
 
             self.__users.append(user)
+            self.__userData.append(userData)
             self.__students.append(student)
 
     def __generateCourses(self):
@@ -126,8 +156,9 @@ class Service:
                 semester = course[2]
                 maxStud = random.randint(150, 215)
                 priority = course[1]
+                credit = random.randint(1, 7)
 
-                c = Course(id, name, fid, year, teacehr, semester, maxStud, priority)
+                c = Course(id, name, fid, year, teacehr, semester, maxStud, priority, credit)
                 self.__courses.append(c)
 
                 id += 1
@@ -164,11 +195,19 @@ class Service:
             if enrollment.year == 1:
                 continue
 
+            i = 1
+
             cids = random.sample([optional[0] for optional in self.__optionalCourses], r)
 
             for cid in cids:
-                opEnr = OptionalEnrollment(enrollment.username, cid)
-                self.__optionalEnrollments.append(opEnr)
+                opEnr = OptionalEnrollment(enrollment.username, cid, i)
+                i += 1
+                ok = True
+                for oE in self.__optionalEnrollments:
+                    if oE.username == opEnr.username and oE.cid == opEnr.cid:
+                        ok = False
+                if ok:
+                    self.__optionalEnrollments.append(opEnr)
 
     def __generateGrades(self):
         for enrollment in self.__studentEnrollments:
@@ -207,6 +246,9 @@ class Service:
 
     def getStaff(self):
         return self.__staff
+
+    def getUserData(self):
+        return self.__userData
 
     def getUsers(self):
         return self.__users

@@ -1,7 +1,7 @@
 
 class Course:
 
-    def __init__(self, id, name, fid, year, teacher, semester, maxStud, priority):
+    def __init__(self, id, name, fid, year, teacher, semester, maxStud, priority, credits):
         self.__id = id
         self.__name = name
         self.__fid = fid
@@ -10,6 +10,7 @@ class Course:
         self.__semester = semester
         self.__maxStud = maxStud
         self.__priority = priority
+        self.__credits = credits
 
     @property
     def id(self):
@@ -25,7 +26,7 @@ class Course:
 
     @property
     def year(self):
-        return self.__id
+        return self.__year
 
     @property
     def teacher(self):
@@ -43,7 +44,11 @@ class Course:
     def priority(self):
         return self.__priority
 
+    @property
+    def credits(self):
+        return self.__credits
+
     def __str__(self):
         return str(self.__id) + ", '" + self.__name + "', " + str(self.__fid) + ", " + str(self.__year) + \
                ", '" + self.__teacher + "', " + str(self.__semester) + ", " + str(self.__maxStud) + \
-               ", " + str(self.__priority)
+               ", " + str(self.__priority) + ", " + str(self.__credits)

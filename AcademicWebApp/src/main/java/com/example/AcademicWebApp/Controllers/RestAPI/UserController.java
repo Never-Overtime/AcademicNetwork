@@ -1,15 +1,14 @@
-package com.example.AcademicWebApp.Controllers.RestAPIs;
+package com.example.AcademicWebApp.Controllers.RestAPI;
+
 import com.example.AcademicWebApp.Repositories.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
+
 import javax.servlet.http.HttpServletRequest;
-import java.util.Locale;
 import java.util.Objects;
 
 @RestController
@@ -38,6 +37,7 @@ public class UserController {
         return new ModelAndView("forward:/{username}/" + role);
     }
 
+
     //@GetMapping("/user/{username}")
     public UserEntity getUser(String username){
 
@@ -51,6 +51,8 @@ public class UserController {
         }
 
     }
-    
+
+
+
 
 }

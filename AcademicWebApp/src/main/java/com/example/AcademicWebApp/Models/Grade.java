@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@IdClass(Grade.class)
+@IdClass(GradeId.class)
 public class Grade implements Serializable {
 
 

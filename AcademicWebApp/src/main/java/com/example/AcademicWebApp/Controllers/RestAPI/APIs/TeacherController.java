@@ -1,4 +1,4 @@
-package com.example.AcademicWebApp.Controllers.RestAPIs.APIs;
+package com.example.AcademicWebApp.Controllers.RestAPI.APIs;
 
 import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.Message;
 import com.example.AcademicWebApp.Models.Course;

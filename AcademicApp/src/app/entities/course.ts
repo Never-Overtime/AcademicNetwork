@@ -1,5 +1,4 @@
 export class Course{
-  
   constructor(
     public cid: number,
     public name: string,

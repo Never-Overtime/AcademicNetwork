@@ -8,6 +8,7 @@ import {ApisService} from "../apis/apis.service";
 import {UserData} from "../entities/userData";
 import {Message} from "../entities/message";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +16,7 @@ import {Message} from "../entities/message";
 })
 
 export class LoginComponent implements OnInit {
+  public loginForm !: FormGroup;
 
   logoWidth = 325;
 

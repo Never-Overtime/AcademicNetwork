@@ -1,1 +1,30 @@
-<p>classement-grants works!</p>
+<div class="container" [style.padding]="pagePadding">
+    <img class="logo-icon" src="assets/logo.svg" [style.width]="logoWidth">
+    <div class="content" [style.padding]="contentPadding">
+       <div class="classement-part">
+           <h2>Classement</h2>
+            <dropdown [ngClass]="'input-semester'" [placeholderText]="'Choose semester'"></dropdown>
+            <h3>Table with students</h3>
+            <app-table  class="students-table" [headers]="tableHeaders" [objectsFromDb]="studentsData" [hasCheckbox]="false" [hasAction]="false"></app-table>    
+        </div>
+        <div class="funding-part">
+            <h2>Funding level</h2>
+            <label>
+                Minimum grade for grant
+                <br>
+                <input #gradeInput="ngModel" ngModel grade="gradeInput" class="list-box-small" type="text" [placeholder]="gradePlaceholder" required>
+            </label>
+            <br><br>
+            <label>
+                Money per person
+                <br>
+                <input #moneyInput="ngModel" ngModel money="moneyInput" class="list-box-small" type="text" [placeholder]="moneyPlaceholder" required>
+            </label>
+            <br><br>
+            <app-button class="btn" [text]="'Send'"></app-button>
+            <br><br>
+            <p>*Everyone from each faculty will receive<br> the same sum and has the =e same<br> minimum grade</p>
+       </div>
+    </div>
+
+</div>

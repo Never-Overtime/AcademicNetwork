@@ -48,7 +48,6 @@ import {ApisService} from "./apis/apis.service";
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatChipsModule} from "@angular/material/chips";
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,8 +77,7 @@ import {MatChipsModule} from "@angular/material/chips";
     DropdownComponent,
     AddOptionalsComponent,
     TableComponent,
-    DialogBoxComponent,
-
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,

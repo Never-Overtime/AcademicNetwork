@@ -9,5 +9,5 @@ export class Course{
     public maxstudents: number,
     public priority: number,
     public credits: number
-  ) {}
+   ) {}
 }

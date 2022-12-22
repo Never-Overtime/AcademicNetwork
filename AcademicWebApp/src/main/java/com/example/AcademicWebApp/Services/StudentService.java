@@ -1,4 +1,5 @@
 package com.example.AcademicWebApp.Services;
+
 import com.example.AcademicWebApp.Models.*;
 import com.example.AcademicWebApp.Repositories.*;
 import lombok.NoArgsConstructor;
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
 
 @NoArgsConstructor
 @Service("studentService")
@@ -17,6 +19,7 @@ public class StudentService {
     private FacultyRepo facultyRepo;
     @Autowired
     private GroupRepo groupRepo;
+
     @Autowired
     private CourseRepo courseRepo;
     @Autowired
@@ -122,7 +125,6 @@ public class StudentService {
         return listF;
 
     }
-
 
     public List<OptionalCourseEnrollment> sendOptionalsPreferences(List<Course> courses, String username)
     {

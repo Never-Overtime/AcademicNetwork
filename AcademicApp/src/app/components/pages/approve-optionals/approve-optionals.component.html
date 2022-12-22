@@ -1,1 +1,15 @@
-<p>approve-optionals works!</p>
+<div class="container" [style.padding]="pagePadding">
+    <img class="logo-icon" src="assets/logo.svg" [style.width]="logoWidth">
+    <div class="content" [style.padding]="contentPadding">
+        <app-table #table [headers]="tableHeaders" [objectsFromDb]="coursesData" [hasCheckbox]="true" [hasAction]="true" [hasSee]="true" [hasDelete]="false" [hasUpdate]="false"></app-table>
+        <app-button [text]="'Approve selected'" (click)="approveOptionalsButton()"></app-button>
+        <div class="text">
+            <p>*To <span class="text-color">change the number of maximum students</span> allowed to a course, just double-click on the course’s “max students” cell and rewrite it.</p>
+
+            <p>**Check one of the two checkboxes to show if you <span class="text-color">approve of the course</span> or not </p>
+                
+            <p>***To <span class="text-color">see details about the course</span>, just click on the eye icon from the first column.</p>
+        </div>
+    </div>
+
+</div>

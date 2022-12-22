@@ -32,6 +32,8 @@ import {DragAndDropDirective} from "./components/drag-and-drop/drag-and-drop.dir
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { AddOptionalsComponent } from './components/pages/add-optionals/add-optionals.component';
+import { ButtonComponent } from './components/basic-components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     DragAndDropComponent,
     DragAndDropDirective,
     DialogBoxComponent,
-    DropdownComponent
+    DropdownComponent,
+    AddOptionalsComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

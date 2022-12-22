@@ -1,3 +1,4 @@
+
 package com.example.AcademicWebApp.Models;
 
 import lombok.AllArgsConstructor;
@@ -12,22 +13,27 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GradeId implements Serializable {
+public class StudentEnrollmentId implements Serializable{
+
 
     private String username;
 
-    private Integer cid;
+    private Integer fid;
+
+    private Integer year;
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, cid);
+        return 1;
     }
 
     @Override
     public boolean equals(Object obj) {
-        GradeId gradeId = (GradeId) obj;
+        StudentEnrollmentId model = (StudentEnrollmentId) obj;
 
-        return Objects.equals(gradeId.getCid(), this.getCid()) && Objects.equals(gradeId.getUsername(), this.getUsername());
+        return Objects.equals(model.getUsername(), this.getUsername()) && Objects.equals(model.getYear(), this.getYear()) &&  Objects.equals(model.getFid(), this.getFid());
 
     }
+
 }
+

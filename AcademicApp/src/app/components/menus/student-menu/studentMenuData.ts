@@ -15,12 +15,12 @@ export const studentMenuData = [
         label: 'Documents'
     },
     {
-        routeLink: 'curriculum',
+        routeLink: 'curriculum-grades',
         icon: 'assets/clipboard.svg',
         label: 'Curriculum & Grades'
     },
     {
-        routeLink: 'proposed-optionals',
+        routeLink: 'optional-courses',
         icon: 'assets/list.svg',
         label: 'Optional Courses'
     },

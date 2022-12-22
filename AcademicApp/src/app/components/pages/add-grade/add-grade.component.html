@@ -1,1 +1,44 @@
-<p>add-grade works!</p>
+<div class="container" [style.padding]="pagePadding">
+  <img class="logo-icon" src="assets/logo.svg" [style.width]="logoWidth">
+  <div class="content" [style.padding]="contentPadding">
+    <div class="grid">
+    <div class="course">
+      <p>Course</p>
+      <dropdown [ngClass]="'input-course'" [placeholderText]="'Choose name of the course'"></dropdown>
+    </div>
+    <div>
+      <p>Table with students</p>
+      <table>
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Group</th>
+          <th>Grade</th>
+          <th>...</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>test row</td>
+          <td>test row</td>
+          <td>test row</td>
+          <td>
+            <dropdown [placeholderText]="'1-10'"></dropdown>
+          </td>
+          <td>
+            <button>Change grade</button>
+          </td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <p>*To change a grade, double click on the cell and rewrite it.</p>
+  </div>
+
+  </div>
+</div>

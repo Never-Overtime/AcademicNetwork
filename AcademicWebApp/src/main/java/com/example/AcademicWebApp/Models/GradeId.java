@@ -2,6 +2,7 @@ package com.example.AcademicWebApp.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class GradeId implements Serializable {
 
@@ -18,7 +20,7 @@ public class GradeId implements Serializable {
 
     @Override
     public int hashCode() {
-        return 1;
+        return Objects.hash(username, cid);
     }
 
     @Override

@@ -40,4 +40,7 @@ public class Course {
     @Column(name= "priority")
     private int priority;
 
+    @Column(name= "credits")
+    private int credits;
+
 }

@@ -29,7 +29,6 @@ public class StudentService {
         Integer fid2 = facultyRepo.findFidByName(student.getFaculty2());
         Integer year2 = student.getYear2();
         String username = student.getUsername();
-        String name = student.getName();
         //we must get the groups
         List<Integer> groups1 = groupRepo.findAllGidsByFacultyAndYear(fid1, year1);
         List<Integer> groups2 = groupRepo.findAllGidsByFacultyAndYear(fid2, year2);
@@ -41,7 +40,7 @@ public class StudentService {
         else
             group2 = groups2.get(rand.nextInt(groups2.size()));
 
-        Student newS = new Student(username, name, group1, group2);
+        Student newS = new Student(username, group1, group2, 0);
         studentRepository.save(newS);
         return newS;
 

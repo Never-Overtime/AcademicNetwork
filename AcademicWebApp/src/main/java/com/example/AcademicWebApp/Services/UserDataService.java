@@ -1,6 +1,6 @@
 package com.example.AcademicWebApp.Services;
 
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.Message;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.Message;
 import com.example.AcademicWebApp.Models.UserData;
 import com.example.AcademicWebApp.Repositories.UserDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;

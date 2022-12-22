@@ -1,14 +1,13 @@
 package com.example.AcademicWebApp.Services;
 
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.CourseStatistics;
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.Message;
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.TeacherStatistics;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.CourseStatistics;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.Message;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.TeacherStatistics;
 import com.example.AcademicWebApp.Models.*;
 import com.example.AcademicWebApp.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 @Service("chiefService")

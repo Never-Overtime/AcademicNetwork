@@ -1,4 +1,4 @@
-package com.example.AcademicWebApp.Controllers.RestAPIs.Entities;
+package com.example.AcademicWebApp.Controllers.RestAPI.Entities;
 
 import lombok.*;
 

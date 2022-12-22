@@ -15,4 +15,4 @@ class Teacher:
         return self.__name
 
     def __str__(self):
-        return "'" + self.__username + "', '" + self.__name + "'"
+        return "'" + self.__username + "'"

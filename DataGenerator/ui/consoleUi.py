@@ -40,13 +40,24 @@ class ConsoleUi:
 
         return usersString
 
+    def __getUserDataString(self):
+        userData = self.__service.getUserData()
+
+        userDataString = ''
+
+        for u in userData:
+            userDataString += 'INSERT INTO "user_data"(username, name, surname, email, phone_number, home_address, cnp) VALUES (' + str(u) + ');'
+            userDataString += '\n'
+
+        return userDataString
+
     def __getStaffString(self):
         staff = self.__service.getStaff()
 
         staffString = ''
 
         for s in staff:
-            staffString += 'INSERT INTO "staff"(username, name) VALUES (' + str(s) + ');'
+            staffString += 'INSERT INTO "staff"(username) VALUES (' + str(s) + ');'
             staffString += "\n"
 
         return staffString
@@ -57,7 +68,7 @@ class ConsoleUi:
         teacherString = ''
 
         for t in teachers:
-            teacherString += 'INSERT INTO "teacher"(username, name) VALUES (' + str(t) + ');'
+            teacherString += 'INSERT INTO "teacher"(username) VALUES (' + str(t) + ');'
             teacherString += "\n"
 
         return teacherString
@@ -91,9 +102,9 @@ class ConsoleUi:
 
         for f in students:
             if f.group2 == None:
-                studentString += 'INSERT INTO "student"(name, username, group1) VALUES (' + str(f) + ');'
+                studentString += 'INSERT INTO "student"(username, group1, scholarship) VALUES (' + str(f) + ');'
             else:
-                studentString += 'INSERT INTO "student"(name, username, group1, group2) VALUES (' + str(f) + ');'
+                studentString += 'INSERT INTO "student"(username, group1, group2, scholarship) VALUES (' + str(f) + ');'
             studentString += "\n"
 
         return studentString
@@ -101,7 +112,7 @@ class ConsoleUi:
     def __coursePrioritiesString(self):
         coursePriorityString = ''
         for c in coursePriorities:
-            coursePriorityString += 'INSERT INTO "course priority"(pid, priority) VALUES (' + str(c[0]) + ", '" + c[1] + "');"
+            coursePriorityString += 'INSERT INTO "course_priority"(pid, priority) VALUES (' + str(c[0]) + ", '" + c[1] + "');"
             coursePriorityString += '\n'
 
         return coursePriorityString
@@ -112,7 +123,7 @@ class ConsoleUi:
         courseString = ''
 
         for f in courses:
-            courseString += 'INSERT INTO "course"(cid, name, fid, year, teacher, semester, maxstudents, priority) VALUES (' + str(f) + ');'
+            courseString += 'INSERT INTO "course"(cid, name, fid, year, teacher, semester, maxstudents, priority, credits) VALUES (' + str(f) + ');'
             courseString += "\n"
 
         return courseString
@@ -123,7 +134,7 @@ class ConsoleUi:
         optionalsString = ''
 
         for o in optionals:
-            optionalsString += 'INSERT INTO "optional course"(cid, username) VALUES (' + str(o[0]) + ", '" + o[1] + "');"
+            optionalsString += 'INSERT INTO "optional_course"(cid, username) VALUES (' + str(o[0]) + ", '" + o[1] + "');"
             optionalsString += '\n'
 
         return optionalsString
@@ -145,7 +156,7 @@ class ConsoleUi:
         optEnrollString = ''
 
         for o in optEnroll:
-            optEnrollString += 'INSERT INTO "optional course enrollment"(username, cid) VALUES (' + str(o) + ");"
+            optEnrollString += 'INSERT INTO "optional_course_enrollment"(username, cid, preference) VALUES (' + str(o) + ");"
             optEnrollString += '\n'
 
         return optEnrollString
@@ -167,6 +178,7 @@ class ConsoleUi:
         file = open("generatedData.sql", 'w', encoding='utf-8')
 
         userInsertString = self.__getUsersString()
+        userDataInsertString = self.__getUserDataString()
         staffInsertString = self.__getStaffString()
         teacherInsertString = self.__getTeacherString()
         facultyInsertString = self.__getFacultyString()
@@ -180,6 +192,8 @@ class ConsoleUi:
         gradeInsertString = self.__gradeString()
 
         file.write(userInsertString)
+        file.write("\n")
+        file.write(userDataInsertString)
         file.write("\n")
         file.write(staffInsertString)
         file.write("\n")

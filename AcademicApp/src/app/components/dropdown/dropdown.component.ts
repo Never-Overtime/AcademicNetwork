@@ -6,6 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./dropdown.component.css']
 })
 export class DropdownComponent implements OnInit {
+
   selectedOption: any;
 
 
@@ -30,7 +31,7 @@ export class DropdownComponent implements OnInit {
   @Input() placeholderText: string = 'All';
   @Input() shownProperty: any = 'text';  // when you receive an array of objects with multiple attributes, this is the name of the atribute that is shown in the dropdown options
   @Input() idProperty: any = 'value';  // this is the name of the atribute that is supposed to be the id 
-  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -59,5 +60,4 @@ export class DropdownComponent implements OnInit {
     this.options = newOptions
   }
   
-
 }

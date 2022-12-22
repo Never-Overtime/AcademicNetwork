@@ -1,1 +1,45 @@
-<p>ask-print works!</p>
+<div class="container" [style.padding]="pagePadding">
+  <img class="logo-icon" src="assets/logo.svg" [style.width]="logoWidth">
+  <div class="content" [style.padding]="contentPadding">
+    <div class="grid">
+      <div class="filter">
+        <div class="input-option">
+          <label>Faculty</label>
+          <dropdown [ngClass]="'input-faculty-size'" [placeholderText]="'Choose name of faculty'"></dropdown>
+        </div>
+        <div class="input-option">
+          <label>Year</label>
+          <dropdown [ngClass]="'input-year-size'" [placeholderText]="'1-6'"></dropdown>
+        </div>
+        <div class="input-option">
+          <label>Group</label>
+          <dropdown [ngClass]="'input-group-size'" [placeholderText]="'All groups'"></dropdown>
+        </div>
+      </div>
+      <div>
+        <p>Table with students</p>
+        <table>
+          <thead>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Year</th>
+          <th>Group</th>
+          <th>Final grade</th>
+          <th>Scholarship</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>.</td>
+            <td>.</td>
+            <td>.</td>
+            <td>.</td>
+            <td>.</td>
+            <td>.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="print-button" (click)="print()">Print</button>
+    </div>
+  </div>
+</div>

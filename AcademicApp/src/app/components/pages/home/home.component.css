@@ -1,17 +1,11 @@
-*{
-    
-}
-
-.container{
-
-}
-
-.logo {
-    position: relative;
-}
-
 .logo-icon{
     position: relative;
     display: block;
     margin: auto;
 }
+
+.text-color{
+  color: #50ACF9;
+  font-weight: bold;
+}
+

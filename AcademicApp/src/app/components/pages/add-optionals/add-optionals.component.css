@@ -14,3 +14,9 @@
   color: #50ACF9;
   font-weight: bold;
 }
+
+.buttons{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

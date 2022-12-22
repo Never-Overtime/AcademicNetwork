@@ -31,6 +31,7 @@ import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.c
 import {DragAndDropDirective} from "./components/drag-and-drop/drag-and-drop.directive";
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TableComponent,
     DragAndDropComponent,
     DragAndDropDirective,
-    DialogBoxComponent
+    DialogBoxComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

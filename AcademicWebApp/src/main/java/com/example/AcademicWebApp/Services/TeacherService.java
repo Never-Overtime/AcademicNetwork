@@ -46,12 +46,14 @@ public class TeacherService {
     @Autowired
     UserDataService userDataService;
 
+    @Autowired
+    OptionalCourseEnrollmentRepo optionalCourseEnrollmentRepo;
+
     public List<Course> getOptionalCoursesOfTeacher(String username){
         return optionalCourseRepo.findOptionalCoursesByUsername(username);
     }
 
     public Message proposeOptional(String username, Course course){
-        // checking if he can add another optional course (ge can update it tho, and that will be okay)
         List<Course> optionalCoursesAlreadyAdded = this.getOptionalCoursesOfTeacher(username);
 
         int nrOfCoursesDifferent = 0;
@@ -87,12 +89,35 @@ public class TeacherService {
         return new Message("All g. Optional course added/updated successfully.");
     }
 
+    public Message deleteOptionalCourse(int cid){
+        this.optionalCourseRepo.deleteById(cid);
+        this.coursesRepo.deleteById(cid);
+
+        return new Message("Delete successfully.");
+    }
+
     public List<Course> getCoursesOfTeacher(String username){
         return this.teacherRepo.getAllCoursesForTeacher(username);
     }
 
     public List<StudentGrade> getStudentsGrades(Course course){
         List<StudentEnrollment> studentEnrollments = this.getAllStudentEnrollmentsEnrolledToCid(course.getCid());
+        List<OptionalCourseEnrollment> optionalCourseEnrollments = optionalCourseEnrollmentRepo.getAllByCid(course.getCid());
+
+        for (OptionalCourseEnrollment oce : optionalCourseEnrollments) {
+            boolean found = false;
+            for (StudentEnrollment se : studentEnrollments) {
+                if (Objects.equals(oce.getUsername(), se.getUsername())) {
+                    found = true;
+                }
+            }
+            //if student enrolled in optional course but is not at that faculty, add them as well
+            if (found == false) {
+                List<StudentEnrollment> se = studentEnrollmentRepo.getStudentEnrollmentsByUsername(oce.getUsername());
+                studentEnrollments.add(se.get(0));
+            }
+        }
+
         List<StudentGrade> studentGrades = new ArrayList<>();
 
 
@@ -120,10 +145,10 @@ public class TeacherService {
 
 
             if(g != null){
-                studentGrades.add(new StudentGrade(se.getUsername(), this.getFullName(se.getUsername()), group, course.getCid(), g.getGradevalue()));
+                studentGrades.add(new StudentGrade(se.getUsername(), this.getFullName(se.getUsername()), group, course.getName(), course.getCid(), g.getGradevalue()));
             }
             else{
-                studentGrades.add(new StudentGrade(se.getUsername(), this.getFullName(se.getUsername()), group, course.getCid(), -1));
+                studentGrades.add(new StudentGrade(se.getUsername(), this.getFullName(se.getUsername()), group, course.getName(), course.getCid(), -1));
             }
         }
 
@@ -141,6 +166,10 @@ public class TeacherService {
         }
 
         return new Message("Every student's grade was updated successfully.");
+    }
+
+    public Faculty getFacultyByFid(int fid){
+        return this.facultiesRepo.findById(fid).get();
     }
 
     private int generateCid(){
@@ -168,5 +197,7 @@ public class TeacherService {
         Course course = coursesRepo.getById(cid);
         return studentEnrollmentRepo.getAllStudentEnrollmentsForFidAndYear(course.getFid(), course.getYear());
     }
+
+
 
 }

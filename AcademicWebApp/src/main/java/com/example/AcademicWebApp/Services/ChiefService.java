@@ -76,6 +76,8 @@ public class ChiefService {
             }
             else{
                 //gets deleted
+                gradeRepo.deleteGradesByCid(optional.getCid());
+                optionalCourseEnrollmentRepo.deleteOptionalCourseEnrollmentsByCid(optional.getCid());
                 optionalCourseRepo.delete(new OptionalCourse(optional.getCid(), username));
                 coursesRepo.delete(optional);
             }

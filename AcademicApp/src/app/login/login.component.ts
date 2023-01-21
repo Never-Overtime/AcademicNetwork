@@ -2,11 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms'
 import { Router } from '@angular/router';
-import {LOGO_WIDTH} from "../constants/sizes";
 import {CookieService} from "ngx-cookie-service";
 import {ApisService} from "../apis/apis.service";
-import {UserData} from "../entities/userData";
-import {Message} from "../entities/message";
 
 
 @Component({
@@ -16,14 +13,10 @@ import {Message} from "../entities/message";
 })
 
 export class LoginComponent implements OnInit {
-  public loginForm !: FormGroup;
 
   logoWidth = 325;
 
   public loginForm !: FormGroup;
-  STUDENT_USERNAME = "michaelwilliams";
-  TEACHER_USERNAME = "eileenwimberly";
-  STAFF_USERNAME = "donnakubinski";
   constructor(private formBuilder : FormBuilder, private http : HttpClient, private router : Router,
               private cookieService:CookieService, private apisService: ApisService) { }
 
@@ -40,24 +33,8 @@ export class LoginComponent implements OnInit {
     var found = false;
     let newUser;
 
-    // do not delete
-    /*
-    this.http.get<IUser>(`http://localhost:8080/user/${this.loginForm.value.username}`)
-          .subscribe((v:IUser) => {
-            if (v.role == "null") {
-              alert("Login failed");
-            }
-            else {
-              alert(`login as ${v.role} successful`);
-              this.loginForm.reset();
-              this.router.navigate([`${v.role.toLocaleLowerCase()}-dashboard`]);
-            }
-          })
-          */
-    // only temporary
-
     let role: string;
-    this.http.get<IUser>(`http://localhost:8080/user/${this.loginForm.value.username}?password=` + this.loginForm.value.password)
+    this.http.get<IUser>(`http://localhost:8080/user/${this.loginForm.value.username}?password=` +  this.encrypt(this.loginForm.value.password).replace("+", " "))
       .subscribe((v:IUser) => {
         this.apisService.getAllFaculties().subscribe((faculties) => {
 
@@ -95,22 +72,28 @@ export class LoginComponent implements OnInit {
           }
           else {
             this.loginForm.reset();
-            //this.router.navigate([${v.role}-dashboard]);
           }
         })
 
       })
+
   }
 
+  encrypt(word: string): string{
+    const keyBase64 = "o9szYIOq1rRMiouNhNvaq96lqUvCekxR";
+    var key = CryptoJS.enc.Base64.parse(keyBase64);
+    var srcs = CryptoJS.enc.Utf8.parse(word);
+    var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+    return encrypted.toString();
+  }
 }
 
-// TO DO: make sure it's the whole user
 export default interface IUser {
-  role: string
+  role: string,
+  message: string
 }
 
 export async function http(request: RequestInfo): Promise<any> {
-  // returns the respone to the http request
   const response = await fetch(request);
   const body = await response.json();
   return body;

@@ -1,7 +1,6 @@
 package com.example.AcademicWebApp.Services;
 
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.Message;
-import com.example.AcademicWebApp.Controllers.RestAPIs.UserEntity;
+import com.example.AcademicWebApp.Controllers.RestAPI.UserEntity;
 import com.example.AcademicWebApp.Models.User;
 import com.example.AcademicWebApp.Repositories.*;
 import com.example.AcademicWebApp.Utils.Utils;

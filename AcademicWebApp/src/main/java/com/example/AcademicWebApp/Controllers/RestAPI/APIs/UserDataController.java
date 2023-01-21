@@ -3,7 +3,6 @@ package com.example.AcademicWebApp.Controllers.RestAPI.APIs;
 import com.example.AcademicWebApp.Controllers.RestAPI.Entities.Message;
 import com.example.AcademicWebApp.Models.UserData;
 import com.example.AcademicWebApp.Services.UserDataService;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,7 @@ public class UserDataController {
     UserDataService userDataService;
 
     @GetMapping("/userdata/{username}/{name}")
-    public String getFullName(@PathVariable(name = "username") String username, @PathVariable(name="name") String name) throws JSONException {
+    public String getFullName(@PathVariable(name = "username") String username, @PathVariable(name="name") String name){
         JSONObject obj = new JSONObject();
         obj.put("fullname", userDataService.getNameByUsername(name));
         return obj.toString();

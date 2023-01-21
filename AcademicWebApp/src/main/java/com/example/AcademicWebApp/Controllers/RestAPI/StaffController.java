@@ -1,7 +1,7 @@
 package com.example.AcademicWebApp.Controllers.RestAPI;
 
 
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.*;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.*;
 import com.example.AcademicWebApp.Services.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,30 +14,6 @@ public class StaffController  {
 
     @Autowired
     private StaffService staffService;
-
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping("/staff/facultyGroups")
-//    public List<FacultyGroups> getFacultyGroups(@CookieValue(name="username") String username) {
-//        return staffService.getFacultiesWithGroups();
-//    }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping("/staff/facultyGroups/students")
-//    public List<Student> getStudentsInGroup(@CookieValue(name="username") String username, @RequestBody Group group) {
-//        return staffService.getStudentsFromGroup(group);
-//    }
-
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping("/staff/facultyYears")
-//    public List<FacultyYears> getFacultyYears(@CookieValue(name="username") String username) {
-//        return staffService.getFacultiesWithYears();
-//    }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping("/staff/facultyYears/students")
-//    public List<Student> getFacultyYears(@CookieValue(name="username") String username, @RequestBody FacultyYear facultyYear) {
-//        return staffService.getStudentsFromFacultyYear(facultyYear);
-//    }
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @PostMapping("/staff/faculty/students/{username}")

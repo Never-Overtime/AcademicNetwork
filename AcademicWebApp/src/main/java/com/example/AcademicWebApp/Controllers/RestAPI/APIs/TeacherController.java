@@ -1,7 +1,7 @@
 package com.example.AcademicWebApp.Controllers.RestAPI.APIs;
 
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.Message;
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.StudentGrade;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.Message;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.StudentGrade;
 import com.example.AcademicWebApp.Models.Course;
 import com.example.AcademicWebApp.Models.Faculty;
 import com.example.AcademicWebApp.Repositories.CourseRepo;

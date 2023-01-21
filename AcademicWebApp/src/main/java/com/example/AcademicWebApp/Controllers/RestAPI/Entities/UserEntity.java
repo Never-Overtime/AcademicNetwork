@@ -1,4 +1,4 @@
-package com.example.AcademicWebApp.Controllers.RestAPIs;
+package com.example.AcademicWebApp.Controllers.RestAPI.Entities;
 
 
 public class UserEntity {

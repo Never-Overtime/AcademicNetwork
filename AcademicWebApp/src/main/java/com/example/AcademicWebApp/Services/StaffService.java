@@ -1,7 +1,10 @@
 package com.example.AcademicWebApp.Services;
 
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.*;
-import com.example.AcademicWebApp.Models.*;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.*;
+import com.example.AcademicWebApp.Models.Faculty;
+import com.example.AcademicWebApp.Models.Grade;
+import com.example.AcademicWebApp.Models.Group;
+import com.example.AcademicWebApp.Models.StudentEnrollment;
 import com.example.AcademicWebApp.Repositories.*;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

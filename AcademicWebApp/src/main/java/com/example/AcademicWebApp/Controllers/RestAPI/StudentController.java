@@ -1,4 +1,5 @@
-package com.example.AcademicWebApp.Controllers.RestAPIs;
+package com.example.AcademicWebApp.Controllers.RestAPI;
+
 
 import com.example.AcademicWebApp.Models.*;
 import com.example.AcademicWebApp.Repositories.StudentRepo;
@@ -71,6 +72,8 @@ public class StudentController {
         return studentService.saveStudent(student);
     }
 
+
+
     @GetMapping("/student/getCoursesFirstGroup/{username}")
     public List<Course> getCoursesForStudentFirstGroup(@PathVariable(name = "username") String username)
     {
@@ -138,9 +141,12 @@ public class StudentController {
     //TODO DEADLINE 21 MAY 13:00 (all done at 3:26)
     //(✿◠‿◠)
 
+
     public String sayHello(UserEntity user)
     {
         return "You are a " + user.getRole() + ". This should be that page where you can edit your profile and etc.";
     }
+
+
 
 }

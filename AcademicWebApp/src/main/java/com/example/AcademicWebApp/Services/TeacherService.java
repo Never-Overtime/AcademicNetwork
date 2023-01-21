@@ -1,14 +1,16 @@
 package com.example.AcademicWebApp.Services;
 
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.Message;
-import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.StudentGrade;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.Message;
+import com.example.AcademicWebApp.Controllers.RestAPI.Entities.StudentGrade;
 import com.example.AcademicWebApp.Models.*;
 import com.example.AcademicWebApp.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Service("teacherService")
 public class TeacherService {

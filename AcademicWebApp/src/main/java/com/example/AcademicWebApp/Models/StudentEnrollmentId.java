@@ -29,7 +29,7 @@ public class StudentEnrollmentId implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        StudentEnrollmentId model = (StudentEnrollmentId) obj;
+        com.example.AcademicWebApp.Models.StudentEnrollmentId model = (com.example.AcademicWebApp.Models.StudentEnrollmentId) obj;
 
         return Objects.equals(model.getUsername(), this.getUsername()) && Objects.equals(model.getYear(), this.getYear()) &&  Objects.equals(model.getFid(), this.getFid());
 

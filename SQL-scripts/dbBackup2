@@ -5,7 +5,6 @@
 -- Dumped from database version 14.2
 -- Dumped by pg_dump version 14.2
 
--- Started on 2022-05-20 02:14:21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1879,7 +1878,6 @@ ALTER TABLE ONLY public.studentenrollment
     ADD CONSTRAINT username_fk FOREIGN KEY (username) REFERENCES public.student(username);
 
 
--- Completed on 2022-05-20 02:14:22
 
 --
 -- PostgreSQL database dump complete

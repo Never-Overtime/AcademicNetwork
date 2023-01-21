@@ -1,5 +1,6 @@
-export interface FoundingData {
-    minimumGrade: number,
-    moneyPerPerson: number
+export class FoundingData {
+  constructor (
+    public minimumGrade: number,
+    public moneyPerPerson: number
+  ) {}
 }
-  

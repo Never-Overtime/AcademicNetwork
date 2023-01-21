@@ -1,5 +1,6 @@
-export interface FacultyYear {
-    faculty: string,
-    year: string
+export class FacultyYear {
+  constructor(
+    public faculty: string,
+    public year: string,
+  ) {}
 }
-  

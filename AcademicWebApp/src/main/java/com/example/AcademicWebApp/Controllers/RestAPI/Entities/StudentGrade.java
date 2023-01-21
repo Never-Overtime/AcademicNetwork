@@ -14,6 +14,7 @@ public class StudentGrade {
     private String username;
     private String name;
     private int group;
+    private String courseName;
     private int cid;
     private int gradeValue;
 

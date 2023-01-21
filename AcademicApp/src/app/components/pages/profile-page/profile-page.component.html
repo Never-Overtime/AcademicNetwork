@@ -5,7 +5,7 @@
       <div class="profile-container">
         <h2 class="text-center">Your personal information </h2>
         <div class="grid">
-          <div class="circle"></div>
+          <img class="profile-picture" [src]="'assets/' + role + '.png'" />
           <div class="first-column">
             <div>
               <label>
@@ -55,10 +55,10 @@
             <input #homeInput="ngModel" [(ngModel)]="homeValue" ngModel  name="homeInput" class="list-box-home-address" type="text" [placeholder]="homePlaceholder" required>
           </label>
         </div>
-        <h6>Bursier: {{bursierText}}</h6>
+        <h6 [hidden]="forScholarship">Bursier: {{bursierText}}</h6>
         <app-button text="Submit" ></app-button>
       </div>
     </form>
   </div>
-  
+
 </div>

@@ -33,40 +33,30 @@ export class ProfilePageComponent implements OnInit {
   emailValue = 'Email...';
   cnpValue = 'Cnp...';
   homeValue= 'Home...';
-
-
-
+  role : string = "";
+  forScholarship: boolean = true;
 
   constructor(private apiService: ApisService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.fillForm();
+    this.role = this.cookieService.get("role");
+
+    if(this.role == "student"){
+      this.forScholarship = false;
+    }
   }
 
   onSubmit(f: NgForm) {
-    /**
-     * @TO_DO - add validations + backend
-     */
-    //console.log(f.value);  // here you get the values from the from
-    //console.log(f.valid);  // check if form is valid
+
 
     let userdata: UserData = new UserData(this.cookieService.get("username"), this.nameValue, this.surnameValue, this.emailValue, this.phoneValue, this.homeValue, this.cnpValue)
     this.apiService.postUserData(userdata).subscribe( (message: Message) => {
-        console.log(message.message)
     })
 
-
-
-
-    // here send data to backend
-
-    // TO DO: the modal where you confirm that the data was send + refresh page to see modifications
   }
 
   fillForm(){
-    /** 
-     * @TO_DO - Here get from backend to fill the profile.
-     */
 
     this.apiService.getUserData().subscribe((userData: UserData) => {
       this.nameValue = userData.name

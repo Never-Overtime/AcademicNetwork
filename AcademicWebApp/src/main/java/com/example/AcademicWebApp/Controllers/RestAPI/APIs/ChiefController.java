@@ -1,7 +1,7 @@
 package com.example.AcademicWebApp.Controllers.RestAPI.APIs;
 
-import com.example.AcademicWebApp.Controllers.RestAPI.Entities.Message;
-import com.example.AcademicWebApp.Controllers.RestAPI.Entities.TeacherStatistics;
+import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.Message;
+import com.example.AcademicWebApp.Controllers.RestAPIs.Entities.TeacherStatistics;
 import com.example.AcademicWebApp.Models.Course;
 import com.example.AcademicWebApp.Services.ChiefService;
 import com.example.AcademicWebApp.Services.TeacherService;

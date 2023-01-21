@@ -77,59 +77,6 @@ public class StaffService {
         }
     }
 
-//    public List<Student> getStudentsFromGroup(Group group) {
-//        List<Student> students = new ArrayList<>();
-//
-//        List<Student> fromGroup1 = studentRepo.findAllByGroup1(group.getGid());
-//        List<Student> fromGroup2 = studentRepo.findAllByGroup2(group.getGid());
-//
-//        students.addAll(fromGroup1);
-//        students.addAll(fromGroup2);
-//
-//        System.out.println(students);
-//
-//        students.sort(this::averageGradeComparator);
-//
-//        System.out.println(students);
-//
-//        return students;
-//    }
-//
-//    public List<FacultyYears> getFacultiesWithYears() {
-//        List<FacultyYears> facultyYears = new ArrayList<>();
-//        List<Faculty> faculties = facultyRepo.findAll();
-//
-//        for (Faculty faculty: faculties){
-//            FacultyYears facultyYears1 = new FacultyYears();
-//            facultyYears1.setFacultyName(faculty.getName());
-//
-//            List<Integer> years = new ArrayList<>();
-//            for (int i = 1; i <= faculty.getNoyears(); i++) {
-//                years.add(i);
-//            }
-//            facultyYears1.setYears(years);
-//
-//            facultyYears.add(facultyYears1);
-//        }
-//
-//        return facultyYears;
-//    }
-//
-//    public List<Student> getStudentsFromFacultyYear(FacultyYear facultyYear) {
-//        List<Student> students = new ArrayList<>();
-//
-//         List<StudentEnrollment> studentEnrollments = studentEnrollmentRepo.findAllByFidAndYear(
-//                facultyRepo.findFidByName(facultyYear.getFacultyName()), facultyYear.getYear());
-//
-//        for (StudentEnrollment studentEnrollment: studentEnrollments) {
-//            students.add(studentRepo.findById(studentEnrollment.getUsername()).get());
-//        }
-//
-//        students.sort(this::averageGradeComparator);
-//
-//        return students;
-//    }
-
     public List<StudentAverage> getStudentsFromFacultyYearGroup(StaffFilter staffFilter) {
         List<StudentAverage> students = new ArrayList<>();
 

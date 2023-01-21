@@ -7,8 +7,9 @@ import { SIDEMENU_WIDTH } from '../constants/sizes';
   styleUrls: ['./student-dashboard.component.css']
 })
 export class StudentDashboardComponent implements OnInit {
+
   leftMargin = SIDEMENU_WIDTH;
-  
+
   constructor() { }
 
   ngOnInit(): void {
